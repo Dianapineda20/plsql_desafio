@@ -1,0 +1,37 @@
+	1CREATE DATABASE peliculas;
+
+	2CREATE TABLE  peliculas(
+		id SERIAL PRIMARY KEY,
+		titulo VARCHAR,
+		año INT,
+		director VARCHAR
+	);
+
+	CREATE TABLE reparto(
+		id SERIAL PRIMARY KEY, 
+		pelicula_id INT,
+		nombre_actor VARCHAR,
+		FOREIGN KEY (pelicula_id) REFERENCES peliculas (id)
+	);
+	
+	3-\copy peliculas FROM '/home/diana/Documentos/desafio_latam/base_de_datos/apoyodesafío2- top100'csv header;
+
+	\copy  reparto (pelicula_id, nombre_actor) FROM '/home/diana/Documentos/desafio_latam/base_de_datos/apoyodesafío2-top100'csv;
+
+	4-SELECT * FROM peliculas INNER JOIN reparto ON peliculas.id = reparto.pelicula_id WHERE peliculas.titulo = 'Titanic';
+
+	5-SELECT titulo FROM peliculas INNER JOIN reparto ON peliculas.id = reparto.pelicula_id WHERE reparto.nombre_actor = 'Harrison Ford';
+
+	6-SELECT director, COUNT(*) AS cantidad FROM peliculas GROUP BY director ORDER BY cantidad DESC LIMIT 10;
+
+
+	7-SELECT COUNT(DISTINCT nombre_actor) from reparto;
+
+	8-SELECT titulo FROM  peliculas WHERE año >= 1990 AND año <= 1999;
+
+	9-SELECT titulo FROM  peliculas WHERE año BETWEEN 1990 and año 1999;
+
+	10-SELECT peliculas.titulo, peliculas.año, reparto.nombre_actor FROM peliculas INNER JOIN reparto ON peliculas.id = reparto.pelicula_id WHERE peliculas.año = 2001; 
+
+
+SELECT reparto.nombre_actor FROM reparto WHERE pelicula_id IN (SELECT id From peliculas ORDER BY año DESC LIMIT 1);

@@ -1,0 +1,21 @@
+	1-CREATE DATABASE modelamiento_de_datos;
+	
+	CREATE TABLE departamento(
+	nombre_departamento VARCHAR(30),
+	 id SERIAL PRIMARY KEY
+	);
+	CREATE TABLE
+	CREATE TABLE  trabajador(
+	 rut VARCHAR(30) PRIMARY KEY,
+	nombre VARCHAR(50),
+	 direccion VARCHAR(30),
+	id_departamento INT REFERENCES departamento(id)
+	 );
+	CREATE TABLE
+	CREATE TABLE liquidaciones(
+	rut VARCHAR (20) REFERENCES trabajador(rut),
+	 id SERIAL PRIMARY KEY,
+	drive VARCHAR
+	 );
+
+
