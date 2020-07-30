@@ -35,3 +35,4 @@ FOREIGN KEY (id_factura) REFERENCES factura(id_factura),
 FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
 
+
