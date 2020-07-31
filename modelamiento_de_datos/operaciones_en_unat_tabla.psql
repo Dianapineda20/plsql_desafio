@@ -1,0 +1,92 @@
+	1-CREATE DATABASE posts;
+	\c posts
+	2-CREATE TABLE post (
+	id SERIAL,
+	nombre VARCHAR(20),
+	fecha TIMESTAMP,
+	contenido VARCHAR(200),
+	descripcion VARCHAR(50),
+	PRIMARY KEY(id)
+	);
+
+	
+	3- INSERT INTO post(nombre, fecha, contenido, descripcion) VALUES('Pamela', '20 06 		2020', 'tierra', 'compra');
+	INSERT INTO post(nombre, fecha, contenido, descripcion) VALUES('Pamela', '20 07 2020', 		'semilla', 'compra');
+	INSERT INTO post(nombre, fecha, contenido, descripcion) VALUES('carlos', '20 06 2020', 		'tierra', 'compra');
+
+
+	4-ALTER TABLE post ADD titulo VARCHAR;
+
+	 
+	5-update post SET titulo= 'rosa' WHERE id=1;
+	update post SET titulo= 'orquidea' WHERE id=2;
+	update post SET titulo= 'lila' WHERE id=3;
+	
+	6-INSERT INTO post(nombre, fecha, contenido, descripcion, titulo) VALUES('pedro', '20 		04 2020', 'masetas', 'compra', 'sol');
+	INSERT INTO post(nombre, fecha, contenido, descripcion, titulo) VALUES('pedro', '20 05 		2020', 'masetas', 'compra', 'sol');
+	
+	7-DELETE FROM post WHERE ID= 3  ;
+	
+	8-INSERT INTO post(nombre, fecha, contenido, descripcion, titulo) VALUES('carlos', '24 		05 2020', 'bolsas', 'compra', 'lilas');
+		
+	9-CREATE TABLE comentarios(
+	id SERIAL,
+	fecha_hora TIMESTAMP,
+	contenido VARCHAR,
+	id_post INT,
+	FOREIGN KEY (id_post) REFERENCES post(id),
+	PRIMARY KEY (id)
+	);
+
+	10- INSERT INTO comentarios(id, fecha_hora, contenido) VALUES (1, '22 01 2020', 		'pendiente pago');
+	INSERT INTO comentarios(id, fecha_hora, contenido) VALUES (1, '22 01 2020', 'pendiente 		pago');
+	INSERT INTO comentarios(id_post, fecha_hora, contenido) VALUES (6, '22 01 2020', 		'pendiente pago');
+ 	INSERT INTO comentarios(id_post, fecha_hora, contenido) VALUES (6, '22 01 2020', 		'pendiente pago'); 
+ 	INSERT INTO comentarios(id_post, fecha_hora, contenido) VALUES (6, '22 01 2020', 		'pendiente pago'); 
+ 	INSERT INTO comentarios(id_post, fecha_hora, contenido) VALUES (6, '22 01 2020', 		'pendiente pago'); 
+ 	
+	 11- INSERT INTO post(nombre, fecha, contenido, descripcion, titulo) 	     VALUES('margarita', '13 05 2020', 'bolsas', 'compra', 'lilas');
+	 	
+ 	12- INSERT INTO comentarios(id_post, fecha_hora, contenido) VALUES (7, '22 01 2020', 	'pendiente pago'); 
+ 	INSERT INTO comentarios(id_post, fecha_hora, contenido) VALUES (7, '22 01 2020', 		'pendiente pago'); 
+ 	INSERT INTO comentarios(id_post, fecha_hora, contenido) VALUES (7, '22 01 2020', 		'pendiente pago'); 
+ 	INSERT INTO comentarios(id_post, fecha_hora, contenido) VALUES (7, '22 01 2020', 		'pendiente pago'); 
+ 	INSERT INTO comentarios(id_post, fecha_hora, contenido) VALUES (7, '22 01 2020', 		'pendiente pago'); 
+ 	
+ 	
+ 	RESULTADO
+ 	
+	 SELECT * FROM post;
+
+	 	id |  nombre   |        fecha        | contenido | descripcion |  titulo  
+	----+-----------+---------------------+-----------+-------------+----------
+	  1 | Pamela    | 2020-06-20 00:00:00 | tierra    | compra      | rosa
+	  2 | Pamela    | 2020-07-20 00:00:00 | semilla   | compra      | orquidea
+	  4 | pedro     | 2020-04-20 00:00:00 | masetas   | compra      | sol
+	  5 | pedro     | 2020-05-20 00:00:00 | masetas   | compra      | sol
+	  6 | carlos    | 2020-05-24 00:00:00 | bolsas    | compra      | lilas
+	  7 | margarita | 2020-05-13 00:00:00 | bolsas    | compra      | lilas
+
+
+	 SELECT * FROM comentarios;
+	 id |     fecha_hora      |   contenido    | id_post 
+	----+---------------------+----------------+---------
+	  2 | 2020-01-22 00:00:00 | pendiente pago |       1
+	  3 | 2020-01-22 00:00:00 | pendiente pago |       1
+	  4 | 2020-01-22 00:00:00 | pendiente pago |       6
+	  5 | 2020-01-22 00:00:00 | pendiente pago |       6
+	  6 | 2020-01-22 00:00:00 | pendiente pago |       6
+	  7 | 2020-01-22 00:00:00 | pendiente pago |       6
+	 10 | 2020-01-22 00:00:00 | pendiente pago |       7
+	 11 | 2020-01-22 00:00:00 | pendiente pago |       7
+	 12 | 2020-01-22 00:00:00 | pendiente pago |       7
+	 13 | 2020-01-22 00:00:00 | pendiente pago |       7
+	 14 | 2020-01-22 00:00:00 | pendiente pago |       7
+
+
+
+
+
+
+
+
