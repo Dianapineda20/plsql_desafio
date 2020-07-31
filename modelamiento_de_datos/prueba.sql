@@ -35,4 +35,14 @@ FOREIGN KEY (id_factura) REFERENCES factura(id_factura),
 FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
 
+INSERT INTO cliente ("nombre", "rut", "direccion") VALUES ('tania', '234556720', 'valles345');
+INSERT 0 1
+INSERT INTO cliente ("nombre", "rut", "direccion") VALUES ('raul', '224556720', 'molina 30');
+INSERT 0 1
+INSERT INTO cliente ("nombre", "rut", "direccion") VALUES ('juan', '198734730', 'los rios 245');
+INSERT 0 1
+INSERT INTO cliente ("nombre", "rut", "direccion") VALUES ('flor', '123455732', 'montaña 1245');
+INSERT 0 1
+INSERT INTO cliente ("nombre", "rut", "direccion") VALUES ('marcos', '123456789', 'horizonte 123');
+INSERT 0 1
 
