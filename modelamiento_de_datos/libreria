@@ -1,0 +1,40 @@
+	CREATE TABLE autor(
+	id_autor SERIAL PRIMARY KEY,
+	nombre_autor VARCHAR
+	 );
+
+
+	CREATE TABLE editorial(
+	id_editorial SERIAL PRIMARY KEY,
+	nombre_editorial VARCHAR
+	);
+
+	REATE TABLE LIBRO(
+	id_libro SERIAL PRIMARY KEY,
+	nombre_libro VARCHAR
+	);
+
+	REATE TABLE prestamo(
+	id_lector INT,
+	ID_libro INT, fecha_devolucion DATE,
+	id_prestamo SERIAL PRIMARY KEY,
+	FOREIGN KEY (id_lector) REFERENCES lector(id_lector), 
+	FOREIGN KEY (id_libro) REFERENCES libro (id_libro)
+	);
+
+	CREATE TABLE libro_editorial(
+	id_libro_editorial SERIAL PRIMARY KEY,
+	id_libro INT,
+	id_editorial INT,
+	FOREIGN KEY (id_libro) REFERENCES libro (id_libro), 
+	FOREIGN KEY (id_editorial) REFERENCES editorial (id_editorial)
+	);
+
+	CREATE TABLE libro_autor(
+	id_libro_autor SERIAL PRIMARY KEY,
+	id_libro INT,
+	id_autor INT,
+	FOREIGN KEY (id_libro) REFERENCES libro (id_libro),
+	FOREIGN KEY (id_autor) REFERENCES autor (id_autor)
+	);
+
