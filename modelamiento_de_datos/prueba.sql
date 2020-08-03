@@ -1,3 +1,7 @@
+NOTA:  Mirson  perdoname la vida, el ID del cliente me quedo solo ID,
+ estoy conciente que es poco descriptivo pero se me paso... ojala no sea tan malo :(
+     
+
 CREATE DATABASE prueba;
 
 CREATE TABLE cliente(
@@ -97,3 +101,7 @@ UPDATE factura SET subtotal=100 WHERE id=4 and id_factura=7;
 UPDATE factura SET subtotal=200 WHERE id=4 and id_factura=8;
 UPDATE factura SET subtotal=330 WHERE id=4 and id_factura=9;
 UPDATE factura SET subtotal=80 WHERE id=4 and id_factura=10;
+
+SELECT id, SUM(subtotal) AS total FROM factura GROUP BY id ORDER BY total DESC LIMIT 1;
+SELECT * FROM (SELECT id, SUM(subtotal) AS total FROM factura GROUP BY id) AS subquery WHERE total > 200;
+SELECT COUNT(id) FROM factura AS f INNER JOIN factura_producto AS fp ON f.id_factura=fp.id_factura WHERE fp.id_producto=6;
